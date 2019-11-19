@@ -8,7 +8,7 @@
                 <div class="card-header">Listing <a class="btn btn-success float-right btn-sm" href="/dashboard">Back</a></div>
 
                 <div class="card-body">
-                        {!! Form::open(['action' => ['ListingsController@update',$listing->id],'method' =>'POST']) !!}
+                        {!! Form::open(['action' => ['ListingsController@update',$listing->id],'method' =>'POST','enctype'=>'multipart/form-data']) !!}
                         <div class="form-group ">
                             {{Form::label('name','Name: ')}}
                             {{Form::text('name',$listing->name,['class'=>'form-control','placeholder'=>'Enter Name'])}}
@@ -43,7 +43,7 @@
                             </div>
                             {{ Form::hidden('_method', 'PUT') }}
 
-                            {{Form::submit('submit',['class'=>'btn btn-primary'])}}
+                            {{Form::submit('submit',['class'=>'btn btn-success'])}}
 
 
                     {!! Form::close() !!}

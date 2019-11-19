@@ -29,7 +29,11 @@
                             {{Form::label('bio', 'Bio: ')}}
                             <li class="list-group-item" >{{$listing->bio}}</li>
                             <br>
+                            {{Form::label('recruiting', 'Recruiting: ')}}
+                            <li class="list-group-item" >{{$listing->recruiting}}</li>
+                            <br>
 
+                            <div class="mt-2 text-right text-success"><a href="/message" class="btn btn-success btn-sm">Report Company</a></div>
 
 
                     {!! Form::close() !!}

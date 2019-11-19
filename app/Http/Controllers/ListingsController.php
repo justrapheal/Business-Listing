@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Listing;
+use Intervention\Image\Facades\Image;
 
 class ListingsController extends Controller
 {
@@ -24,7 +25,7 @@ class ListingsController extends Controller
 
                     //or
 
-        $listing = Listing::latest()->get();
+        $listing = Listing::where('valid',2)->latest()->get();
         return view('listings',compact('listing'));
 
     }
@@ -49,17 +50,24 @@ class ListingsController extends Controller
     {
         request()->validate([
             'name' => 'required|min:3',
-            'email' => 'required'
+            'address' => 'required',
+            'email' => 'required',
+            'recruiting' => 'required',
+            'image' => 'required|image|max:5000'
         ]);
             $listing = new Listing();
             $listing->name = request('name');
             $listing->email = request('email');
             $listing->website = request('website');
             $listing->phone = request('phone');
+            $listing->recruiting = request('recruiting');
             $listing->address = request('address');
+            $listing->image = request('image')->store('uploads', 'public');
             $listing->bio = request('bio');
             $listing->user_id = auth()->user()->id;
             $listing->save();
+            $image = Image::make(public_path('storage/' . $listing->image))->fit(200,200);
+            $image->save();
             return redirect('/dashboard')->with('ok','Listing  Added');
         }
 

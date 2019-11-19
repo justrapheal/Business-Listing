@@ -18,10 +18,13 @@ class CreateListingsTable extends Migration
             $table->integer('user_id');
             $table->string('name');
             $table->string('address');
+            $table->string('recruiting');
             $table->string('website');
             $table->string('email');
+            $table->integer('valid')->default(1);
             $table->string('phone');
             $table->string('bio');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

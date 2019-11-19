@@ -11,7 +11,12 @@
 |
 */
 
-Route::get('/', 'ListingsController@index');
+Route::get('/', 'messageController@index');
+Route::post('/search', 'messageController@search')->name('search');
+
+Route::get('/businessList', 'ListingsController@index');
+Route::get('message', 'messageController@create');
+Route::post('message', 'messageController@store');
 
 Auth::routes();
 Route::resource('listings', 'ListingsController');

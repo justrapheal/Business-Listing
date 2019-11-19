@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+
+@section('content')
 @if(session('ok'))
 
 <div class="alert alert-success my-3">
@@ -7,12 +9,10 @@
     </div>
 @endif
 
-@section('content')
-
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Dashboard <span class="float-right"><a href="/listings/create" class="btn btn-outline-success btn-sm">Add Listings</a></span></div>
+                <div class="card-header text-success" style="background-color:goldenrod">Dashboard <span class="float-right"><a href="/listings/create" class="btn btn-success btn-sm">Add Listings</a></span></div>
 
                 <div class="card-body">
                     @if (session('status'))
